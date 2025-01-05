@@ -1,0 +1,7 @@
+:root {
+  --color-for-toggler: #92bdf5;
+}
+
+.navbarColoring {
+  color: var(--color-for-toggler);
+}
