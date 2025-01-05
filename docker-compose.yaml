@@ -1,0 +1,12 @@
+services:
+  app-fe:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.dev
+    container_name: app-fe
+    ports:
+      - 5173:5173
+    volumes:
+      - ./src:/app/src
+    environment:
+      VITE_BACKEND_URL: ${VITE_BACKEND_URL}
