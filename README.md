@@ -1,50 +1,58 @@
-# React + TypeScript + Vite
+![Deployment Pipeline](https://github.com/Fermion155/imagerecognition-FE/actions/workflows/github-ci.yml/badge.svg)
+![Language](https://img.shields.io/badge/language-React-blue)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# IMAGE RECOGNITION FRONTEND
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [About The Project](#about-the-project)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Future Plans](#future-plans)
+- [Ownership](#ownership)
 
-## Expanding the ESLint configuration
+## About The Project
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Project was built with **REACT**+**TYPESCRIPT**+**VITE**.
 
-- Configure the top-level `parserOptions` property like this:
+Image recognition frontend is an application that provides a basic UI for image recognition application.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+This service uses Amazon Rekognition service to recognize the received images and decide if it is **ALLOWED** or **NOT_ALLOWED** to be used somewhere. The option that the image was **NOT_RECOGNIZED** can also be returned by this UI in case none of the labels returned by Amazon Rekognition match the ones saved in the database.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Installation
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/Fermion155/imagerecognition-FE.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd imagerecognition-FE
+   ```
+3. Define environment variables either in a .env file within the project directory or by exporting them in the shell.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+   Environment variable list:
+
+   - VITE_BACKEND_URL - url used for backend service that recognizes images
+
+4. Run application:  
+   a. On docker:
+   ```sh
+   docker-compose up
+   ```
+
+## Usage
+
+The application will be accessible at `localhost:5173/`  
+From this webpage it is possible to view current categories that are **allowed** or **not allowed**.
+In the webpage you can also upload an image no bigger than 1MB in order to analyze and recognize it based on current labies and categories.
+
+## Future Plans
+
+- The ability to add new categories from the UI.
+- The ability to delete or disable the categories which are allowed or not allowed.
+- Add user authentification feature.
+
+## Ownership
+
+This project is maintained and owned by Paulius Drabužinskis
